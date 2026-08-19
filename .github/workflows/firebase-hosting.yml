@@ -1,4 +1,4 @@
-name: Deploy to Firebase Hosting on Merge
+name: Deploy to Firebase Hosting on Push
 
 on:
   push:
@@ -24,20 +24,19 @@ jobs:
       - name: Build Application
         run: npm run build
 
-      - name: Deploy with Firebase Service Account (Method 1)
-        if: env.FIREBASE_SERVICE_ACCOUNT != ''
+      - name: Deploy to Firebase Hosting via Token
+        if: env.FIREBASE_TOKEN != ''
+        run: npx firebase-tools deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}" --project dental-a8f70
+        env:
+          FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'
+
+      - name: Deploy to Firebase Hosting via Service Account
+        if: env.FIREBASE_TOKEN == ''
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ORTHO_3D717 }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DENTAL_A8F70 }}'
           channelId: live
-          projectId: ortho-3d717
+          projectId: dental-a8f70
         env:
-          FIREBASE_SERVICE_ACCOUNT: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ORTHO_3D717 }}'
-        continue-on-error: true
-
-      - name: Deploy with Firebase CI Token (Method 2)
-        if: env.FIREBASE_TOKEN != ''
-        run: npx firebase-tools deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}" --project ortho-3d717
-        env:
-          FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'
+          FIREBASE_SERVICE_ACCOUNT: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DENTAL_A8F70 }}'
