@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="dentalTealGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="goldSparkle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="14" fill="url(#dentalTealGlow)" />
+  <!-- Tooth Icon -->
+  <path d="M16 12C12 12 10 16 10 21C10 27 13 32 15 36C16.5 39 18 39 19 36C20 33 21 28 24 28C27 28 28 33 29 36C30 39 31.5 39 33 36C35 32 38 27 38 21C38 16 36 12 32 12C28 12 26 15 24 15C22 15 20 12 16 12Z" fill="white" opacity="0.95" />
+  <!-- Sparkle Accent -->
+  <circle cx="35" cy="13" r="3" fill="#ffffff" />
+  <circle cx="13" cy="35" r="2" fill="url(#goldSparkle)" />
+</svg>
